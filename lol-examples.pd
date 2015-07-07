@@ -1,54 +1,58 @@
-#N canvas 472 103 450 643 10;
+#N canvas 524 92 450 664 10;
 #X msg 13 58 1 2 3 4;
-#X msg 143 47 bang;
-#X msg 271 47 bang;
-#X obj 271 105 print gathern'd;
-#X obj 143 118 print gather'd;
+#X msg 153 47 bang;
+#X msg 281 47 bang;
+#X obj 281 105 print gathern'd;
+#X obj 153 118 print gather'd;
 #X text 10 6 pop the head \; off the list \; and print both;
-#X text 141 12 gather up values \; until done \;;
-#X text 269 15 gather N values \; at a time \;;
-#X msg 12 213 a b c d e f g h i j k l m;
-#X msg 303 208 bang;
-#X obj 303 317 print;
-#X text 10 182 cut the middle \; out of a list;
-#X text 300 165 round-about way \; to pick 22 \; from a list \;;
-#X msg 14 385 bang;
+#X text 151 12 gather up values \; until done \;;
+#X text 279 15 gather N values \; at a time \;;
+#X msg 12 195 a b c d e f g h i j k l m;
+#X msg 303 201 bang;
+#X obj 303 310 print;
+#X text 10 164 cut the middle \; out of a list;
+#X text 300 158 round-about way \; to pick 22 \; from a list \;;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array lookup 16 float 3;
 #A 0 0.85 0.249997 0.0999992 0.149998 0.249997 0.449994 0.599992 0.349995
 0.0999992 0.05 0.0999992 0.0999992 0.0999992 0.399995 0.349995 0.149998
 ;
-#X coords 0 1 16 0 128 20 1 0 0;
-#X restore 14 358 graph;
-#X text 161 387 out-of-band receive;
+#X coords 0 1 16 0 128 20 2 0 0;
+#X restore 14 291 graph;
+#X text 178 354 out-of-band receive;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array result 16 float 3;
-#A 0 1 1 0 0 0 0 1 1 0 0 0 0 0 0 1 0;
+#X array result 16 float 2;
 #X coords 0 1 16 0 128 20 1 0 0;
-#X restore 14 600 graph;
-#X obj 14 408 lol tee seed \; loadbng \; range 16 \; tabread lookup
-\; tee \$0/compare \; bng \; random 1024 \; / 1024 \; concat \$0/compare
-\; expr if($f1<$f2 \, 1 \, 0) \; gathern 16 \; list prepend 0 \; tee
-result \;;
-#X obj 161 408 r \$0/compare;
-#X obj 161 430 gathern 16;
-#X obj 161 451 print oob;
-#X text 13 321 weighted random lookup;
+#X restore 14 637 graph;
+#X text 13 260 weighted random lookup;
+#X msg 57 320 18;
+#X msg 100 320 23;
+#X obj 178 418 print oob receive;
+#X obj 178 397 gathern 4;
+#X obj 178 375 r \$0/rand;
 #X obj 13 80 lol pop myval \; pr remainder \; bng \; concat myval \;
 pr myval \;;
-#X obj 271 69 lol range 32 \; gathern 8 \;;
-#X obj 143 69 lol teef done-1 \; range 32 \; gather done-1 \;;
-#X obj 12 235 lol slice 5 5 \; pr slice'd \;;
-#X obj 303 230 lol range 32 \; tee nums \; sel 22 \; teef done-3 \;
+#X obj 281 69 lol range 32 \; gathern 8 \;;
+#X obj 153 69 lol teef done-1 \; range 32 \; gather done-1 \;;
+#X obj 12 217 lol slice 5 5 \; pr slice'd \;;
+#X obj 303 223 lol range 32 \; tee nums \; sel 22 \; teef done-3 \;
 concat nums \; . done-3 \;;
+#X msg 14 320 5;
+#X obj 14 343 lol tee in-seed \; loadbng \; concat in-seed \; default
+1 \; list prepend seed \; list trim \; tee seed \; bng \; range 16
+\; tabread lookup \; tee \$0/compare \; bng \; merge seed \; random
+1024 \; / 1024 \; tee \$0/rand \; concat \$0/compare \; expr if($f1<$f2
+\, 1 \, 0) \; gathern 16 \; list prepend 0 \; tee result \;;
 #X connect 0 0 22 0;
 #X connect 1 0 24 0;
 #X connect 2 0 23 0;
 #X connect 8 0 25 0;
 #X connect 9 0 26 0;
-#X connect 13 0 17 0;
-#X connect 18 0 19 0;
-#X connect 19 0 20 0;
+#X connect 17 0 28 0;
+#X connect 18 0 28 0;
+#X connect 20 0 19 0;
+#X connect 21 0 20 0;
 #X connect 23 0 3 0;
 #X connect 24 0 4 0;
 #X connect 26 0 10 0;
+#X connect 27 0 28 0;
