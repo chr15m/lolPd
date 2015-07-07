@@ -1,25 +1,31 @@
-#N canvas 421 328 491 357 10;
-#X msg 18 228 12;
-#X obj 18 311 print;
-#X text 7 8 O! is a minimalist domain-specific language for doing simple
+#N canvas 206 172 491 704 10;
+#X msg 263 117 12;
+#X obj 263 200 print;
+#X text 9 261 In addition to standard Pd objects \, you can also insert
+the following functions into a pipeline:;
+#X obj 24 213 print;
+#X obj 24 139 lol loadbng \; range 16 \; bng \; random 128 \; / 128
+\;;
+#X msg 24 118 bang;
+#X text 21 100 generate 16 random normal floats;
+#X obj 263 139 lol tee value \; range 10 \; concat value \; expr $f1
++ $f2 \;;
+#X text 260 101 10 values starting at 12;
+#X text 9 294 range = output a range of numbers using [until] and an
+internal counter \; tee X = send value to X and then pass it through
+\; teef X = pass the value through and then send to X \; loadbng =
+loadbang with an inlet that you can bang again \; concat X = receive
+X and concatenate onto incoming values \; \; COMING SOON \; choose
+N [M] = choose the Nth to Mth values in a list \; gather [N] = gather
+incoming values into a list \, N at a time is optional \; . X = when
+anthing is received on X \, output whatever was last input \;, f 74
+;
+#X text 7 8 lol is a minimal domain-specific language for doing simple
 programmatic tasks and list-comprehensions in Pure Data. It exists
 to try and prevent RSI. Internally \, O creates vertical stacks of
 Pd objects connected by a single pipeline and data runs as usual from
 top to bottom.;
-#X text 9 127 range = output a range of numbers using [until] and an
-internal counter \; tee X = send value to X as well as passing it through
-\; concat X = concatenate from X onto incoming values \; choose N [M]
-= choose the Nth to Mth values in a list \; gather [N] = gather incoming
-values into a list \, N at a time is optional \; . X = when anthing
-is received on X \, output whatever was last input \;, f 74;
-#X text 9 94 In addition to standard Pd objects \, you can also insert
-the following functions into a pipeline:;
-#X obj 18 250 lol tee value \; range 10 \; cat value \; expr $f1 +
-$f2 \;;
-#X obj 138 228 lol tee done \; range 20 \; tee index \; bng \; random
-128 \; concat X \; gather \; . done \;;
-#X obj 232 229 lol a b c d e f \; g h i j k l m n o p q r s \; t u
-v w x y z A B C \; D E F G H I J K L M N \; O P Q R S T U V W X Y Z
-;
-#X connect 0 0 5 0;
-#X connect 5 0 1 0;
+#X connect 0 0 7 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 7 0 1 0;
