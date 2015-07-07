@@ -1,4 +1,4 @@
-#N canvas 203 157 491 704 10;
+#N canvas 202 152 491 704 10;
 #X msg 173 117 12;
 #X text 9 281 In addition to standard Pd objects \, you can also insert
 the following functions into a pipeline:;
@@ -7,15 +7,6 @@ the following functions into a pipeline:;
 #X msg 24 118 bang;
 #X obj 173 139 lol tee value \; range 10 \; concat value \; expr $f1
 + $f2 \;;
-#X text 9 314 range = output a range of numbers using [until] and an
-internal counter \; tee X = send value to X and then pass it through
-\; teef X = pass the value through and then send to X \; loadbng =
-loadbang with an inlet that you can bang again \; concat X = receive
-X and concatenate onto incoming values \; \; COMING SOON \; choose
-N [M] = choose the Nth to Mth values in a list \; gather [N] = gather
-incoming values into a list \, N at a time is optional \; . X = when
-anthing is received on X \, output whatever was last input \;, f 74
-;
 #X obj 24 213 print random;
 #X obj 173 200 print counter;
 #X text 7 8 lol is a tiny domain-specific language for doing simple
@@ -30,9 +21,19 @@ top to bottom.;
 #X obj 323 240 print midictl;
 #X obj 323 138 lol tee count \; loadbng \; concat count \; default
 16 \; range \; bng \; random 128 \;;
+#X text 9 314 range = output a range of numbers using [until] and an
+internal counter \; tee X = send value to X and then pass it through
+\; teef X = pass the value through and then send to X \; loadbng =
+loadbang with an inlet that you can bang again \; concat X = receive
+X and concatenate onto incoming values \; \; COMING SOON \; pop X =
+pop the first value off the list and send the rest to X slice N [M]
+= only pass through the Nth to Mth values in a list \; gather [N] =
+gather incoming values into a list \, of length N - optional \; . X
+= when anthing is received on X \, output whatever was last input \;
+, f 74;
 #X connect 0 0 4 0;
-#X connect 2 0 6 0;
+#X connect 2 0 5 0;
 #X connect 3 0 2 0;
-#X connect 4 0 7 0;
-#X connect 9 0 14 0;
-#X connect 14 0 13 0;
+#X connect 4 0 6 0;
+#X connect 8 0 13 0;
+#X connect 13 0 12 0;
