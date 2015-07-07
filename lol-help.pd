@@ -1,6 +1,6 @@
-#N canvas 202 152 491 704 10;
+#N canvas 200 142 491 704 10;
 #X msg 173 117 12;
-#X text 9 281 In addition to standard Pd objects \, you can also insert
+#X text 9 311 In addition to standard Pd objects \, you can also insert
 the following functions into a pipeline:;
 #X obj 24 139 lol loadbng \; range 16 \; bng \; random 128 \; / 128
 \;;
@@ -21,16 +21,18 @@ top to bottom.;
 #X obj 323 240 print midictl;
 #X obj 323 138 lol tee count \; loadbng \; concat count \; default
 16 \; range \; bng \; random 128 \;;
-#X text 9 314 range = output a range of numbers using [until] and an
+#X text 9 344 range = output a range of numbers using [until] and an
 internal counter \; tee X = send value to X and then pass it through
 \; teef X = pass the value through and then send to X \; loadbng =
 loadbang with an inlet that you can bang again \; concat X = receive
-X and concatenate onto incoming values \; \; COMING SOON \; pop X =
-pop the first value off the list and send the rest to X slice N [M]
+X and concatenate onto incoming values \; pr X = print incoming values
+with print-prefix of X & pass through \; pop X = pop the first value
+off the list and send the rest to X \; \; COMING SOON \; slice N [M]
 = only pass through the Nth to Mth values in a list \; gather [N] =
 gather incoming values into a list \, of length N - optional \; . X
 = when anthing is received on X \, output whatever was last input \;
 , f 74;
+#X obj 11 281 lol-examples;
 #X connect 0 0 4 0;
 #X connect 2 0 5 0;
 #X connect 3 0 2 0;

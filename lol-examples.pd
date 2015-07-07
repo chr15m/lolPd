@@ -1,0 +1,6 @@
+#N canvas 780 244 450 300 10;
+#X msg 13 28 1 2 3 4;
+#X obj 13 50 lol pop myval \; pr remainder \; bng \; concat myval \;
+pr myval \;;
+#X text 10 6 pop the head off the list and print both;
+#X connect 0 0 1 0;
