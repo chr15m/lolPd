@@ -1,4 +1,4 @@
-#N canvas 197 79 491 688 10;
+#N canvas 195 79 491 688 10;
 #X msg 173 117 12;
 #X text 19 311 In addition to standard Pd objects \, you can also insert
 the following functions into a pipeline:;
@@ -33,7 +33,8 @@ merge with the pipeline (fan in) \; gather X = collect incoming values
 into a list until we receive from X \; gathern N = collect incoming
 values into lists of length N \; slice N [M] = pass through M values
 starting from the Nth of the list \; . X = only output whater was last
-received when X also receives \;, f 74;
+received when X also receives \; # = start of a comment (null object
+that passes everything through) \;, f 74;
 #X connect 0 0 4 0;
 #X connect 2 0 5 0;
 #X connect 3 0 2 0;

@@ -1,4 +1,4 @@
-#N canvas 524 92 450 664 10;
+#N canvas 522 93 450 664 10;
 #X msg 13 58 1 2 3 4;
 #X msg 153 47 bang;
 #X msg 281 47 bang;
@@ -43,6 +43,10 @@ concat nums \; . done-3 \;;
 \; tabread lookup \; tee \$0/compare \; bng \; merge seed \; random
 1024 \; / 1024 \; tee \$0/rand \; concat \$0/compare \; expr if($f1<$f2
 \, 1 \, 0) \; gathern 16 \; list prepend 0 \; tee result \;;
+#X obj 224 492 lol loadbng \; range 16 \; # this is a comment \; gathern
+16 \; list prepend set \; list trim \;;
+#X msg 224 580;
+#X text 221 472 comments;
 #X connect 0 0 22 0;
 #X connect 1 0 24 0;
 #X connect 2 0 23 0;
@@ -56,3 +60,4 @@ concat nums \; . done-3 \;;
 #X connect 24 0 4 0;
 #X connect 26 0 10 0;
 #X connect 27 0 28 0;
+#X connect 29 0 30 0;
