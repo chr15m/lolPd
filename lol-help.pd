@@ -1,6 +1,6 @@
-#N canvas 200 142 491 704 10;
+#N canvas 199 137 491 704 10;
 #X msg 173 117 12;
-#X text 9 311 In addition to standard Pd objects \, you can also insert
+#X text 19 311 In addition to standard Pd objects \, you can also insert
 the following functions into a pipeline:;
 #X obj 24 139 lol loadbng \; range 16 \; bng \; random 128 \; / 128
 \;;
@@ -9,30 +9,30 @@ the following functions into a pipeline:;
 + $f2 \;;
 #X obj 24 213 print random;
 #X obj 173 200 print counter;
-#X text 7 8 lol is a tiny domain-specific language for doing simple
+#X text 17 8 lol is a tiny domain-specific language for doing simple
 programmatic tasks and list-comprehensions in Pure Data. It exists
 to try and prevent RSI. Internally \, lol creates vertical stacks of
 Pd objects connected by a single pipeline and data runs as usual from
-top to bottom.;
-#X msg 323 115 4;
+top to bottom., f 74;
+#X msg 317 115 4;
 #X text 21 87 generate 16 random \; floats between 0 & 1;
 #X text 170 86 output 10 integers \; starting at 12;
-#X text 320 84 output N midi values \; defaults to 16 on load.;
-#X obj 323 240 print midictl;
-#X obj 323 138 lol tee count \; loadbng \; concat count \; default
+#X text 314 84 output N midi values \; defaults to 16 on load.;
+#X obj 317 240 print midictl;
+#X obj 317 138 lol tee count \; loadbng \; concat count \; default
 16 \; range \; bng \; random 128 \;;
-#X text 9 344 range = output a range of numbers using [until] and an
-internal counter \; tee X = send value to X and then pass it through
+#X obj 21 281 lol-examples;
+#X text 19 344 range = output a range of numbers using [until] and
+an internal counter \; tee X = send value to X and then pass it through
 \; teef X = pass the value through and then send to X \; loadbng =
 loadbang with an inlet that you can bang again \; concat X = receive
 X and concatenate onto incoming values \; pr X = print incoming values
 with print-prefix of X & pass through \; pop X = pop the first value
-off the list and send the rest to X \; \; COMING SOON \; slice N [M]
-= only pass through the Nth to Mth values in a list \; gather [N] =
-gather incoming values into a list \, of length N - optional \; . X
-= when anthing is received on X \, output whatever was last input \;
-, f 74;
-#X obj 11 281 lol-examples;
+off the list and send the rest to X \; gather X = collect incoming
+values into a list until we receive from X \; gathern N = collect incoming
+values into lists of length N \; slice N [M] = pass through M values
+starting from the Nth of the list \; . X = only output whater was last
+received when X also receives \;, f 74;
 #X connect 0 0 4 0;
 #X connect 2 0 5 0;
 #X connect 3 0 2 0;
