@@ -1,9 +1,7 @@
-#N canvas 206 172 491 704 10;
+#N canvas 205 167 491 704 10;
 #X msg 263 117 12;
-#X obj 263 200 print;
 #X text 9 261 In addition to standard Pd objects \, you can also insert
 the following functions into a pipeline:;
-#X obj 24 213 print;
 #X obj 24 139 lol loadbng \; range 16 \; bng \; random 128 \; / 128
 \;;
 #X msg 24 118 bang;
@@ -25,7 +23,9 @@ programmatic tasks and list-comprehensions in Pure Data. It exists
 to try and prevent RSI. Internally \, O creates vertical stacks of
 Pd objects connected by a single pipeline and data runs as usual from
 top to bottom.;
-#X connect 0 0 7 0;
-#X connect 4 0 3 0;
-#X connect 5 0 4 0;
-#X connect 7 0 1 0;
+#X obj 24 213 print random;
+#X obj 263 200 print counter;
+#X connect 0 0 5 0;
+#X connect 2 0 9 0;
+#X connect 3 0 2 0;
+#X connect 5 0 10 0;
