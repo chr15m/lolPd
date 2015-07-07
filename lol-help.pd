@@ -1,15 +1,13 @@
-#N canvas 204 162 491 704 10;
-#X msg 263 117 12;
-#X text 9 261 In addition to standard Pd objects \, you can also insert
+#N canvas 203 157 491 704 10;
+#X msg 173 117 12;
+#X text 9 281 In addition to standard Pd objects \, you can also insert
 the following functions into a pipeline:;
 #X obj 24 139 lol loadbng \; range 16 \; bng \; random 128 \; / 128
 \;;
 #X msg 24 118 bang;
-#X text 21 100 generate 16 random normal floats;
-#X obj 263 139 lol tee value \; range 10 \; concat value \; expr $f1
+#X obj 173 139 lol tee value \; range 10 \; concat value \; expr $f1
 + $f2 \;;
-#X text 260 101 10 values starting at 12;
-#X text 9 294 range = output a range of numbers using [until] and an
+#X text 9 314 range = output a range of numbers using [until] and an
 internal counter \; tee X = send value to X and then pass it through
 \; teef X = pass the value through and then send to X \; loadbng =
 loadbang with an inlet that you can bang again \; concat X = receive
@@ -19,13 +17,22 @@ incoming values into a list \, N at a time is optional \; . X = when
 anthing is received on X \, output whatever was last input \;, f 74
 ;
 #X obj 24 213 print random;
-#X obj 263 200 print counter;
+#X obj 173 200 print counter;
 #X text 7 8 lol is a tiny domain-specific language for doing simple
 programmatic tasks and list-comprehensions in Pure Data. It exists
 to try and prevent RSI. Internally \, lol creates vertical stacks of
 Pd objects connected by a single pipeline and data runs as usual from
 top to bottom.;
-#X connect 0 0 5 0;
-#X connect 2 0 8 0;
+#X msg 323 115 4;
+#X text 21 87 generate 16 random \; floats between 0 & 1;
+#X text 170 86 output 10 integers \; starting at 12;
+#X text 320 84 output N midi values \; defaults to 16 on load.;
+#X obj 323 240 print midictl;
+#X obj 323 138 lol tee count \; loadbng \; concat count \; default
+16 \; range \; bng \; random 128 \;;
+#X connect 0 0 4 0;
+#X connect 2 0 6 0;
 #X connect 3 0 2 0;
-#X connect 5 0 9 0;
+#X connect 4 0 7 0;
+#X connect 9 0 14 0;
+#X connect 14 0 13 0;
