@@ -1,13 +1,9 @@
-#N canvas 195 79 491 688 10;
+#N canvas 193 79 491 688 10;
 #X msg 173 117 12;
-#X text 19 311 In addition to standard Pd objects \, you can also insert
+#X text 19 341 In addition to standard Pd objects \, you can also insert
 the following functions into a pipeline:;
-#X obj 24 139 lol loadbng \; range 16 \; bng \; random 128 \; / 128
-\;;
 #X msg 24 118 bang;
-#X obj 173 139 lol tee value \; range 10 \; concat value \; expr $f1
-+ $f2 \;;
-#X obj 24 213 print random;
+#X obj 24 226 print random;
 #X obj 173 200 print counter;
 #X text 17 8 lol is a tiny domain-specific language for doing simple
 programmatic tasks and list-comprehensions in Pure Data. It exists
@@ -19,25 +15,39 @@ top to bottom., f 74;
 #X text 170 86 output 10 integers \; starting at 12;
 #X text 314 84 output N midi values \; defaults to 16 on load.;
 #X obj 317 240 print midictl;
-#X obj 317 138 lol tee count \; loadbng \; concat count \; default
-16 \; range \; bng \; random 128 \;;
-#X obj 21 281 lol-examples;
-#X text 19 344 range = output a range of numbers using [until] and
+#X obj 21 311 lol-examples;
+#X text 18 557 NOTES \; the lol object currently has a limitation of
+128 atoms \; the last atom should always be a semicolon and never a
+0 \; use the ^ modifier to make "local" \$0-prepended send/receive
+variables \;, f 74;
+#X text 18 374 range = output a range of numbers using [until] and
 an internal counter \; tee X = send value to X and then pass it through
-\; teef X = pass the value through and then send to X \; loadbng =
-loadbang with an inlet that you can bang again \; concat X = receive
-X and concatenate onto incoming values \; pr X = print incoming values
-with print-prefix of X & pass through \; pop X = pop the first value
-off the list and send the rest to X \; merge X = receive from X and
-merge with the pipeline (fan in) \; gather X = collect incoming values
-into a list until we receive from X \; gathern N = collect incoming
-values into lists of length N \; slice N [M] = pass through M values
-starting from the Nth of the list \; . X = only output whater was last
-received when X also receives \; # = start of a comment (null object
-that passes everything through) \;, f 74;
-#X connect 0 0 4 0;
-#X connect 2 0 5 0;
-#X connect 3 0 2 0;
-#X connect 4 0 6 0;
-#X connect 8 0 13 0;
-#X connect 13 0 12 0;
+(use ^ X to make local) \; teef X = pass the value through and then
+send to X \; loadbng = loadbang with an inlet that you can bang again
+\; concat X = receive X and concatenate onto incoming values \; pr
+X = print incoming values with print-prefix of X & pass through \;
+pop X = pop the first value off the list and send the rest to X \;
+merge X = receive from X and merge with the pipeline (fan in) \; gather
+X = collect incoming values into a list until we receive from X \;
+gathern N = collect incoming values into lists of length N \; slice
+N [M] = pass through M values starting from the Nth of the list \;
+. X = only output whater was last received when X also receives \;
+# = start of a comment (null object that passes everything through)
+\;, f 74;
+#X obj 24 139 lol loadbng \; range 16 \; tee inc \; bng \; random 128
+\; / 128 \;;
+#X obj 24 252 r inc;
+#X obj 24 274 print inc;
+#X text 61 253 (global);
+#X obj 173 139 lol tee ^ val \; range 10 \; concat ^ val \; expr $f1
++ $f2 \;;
+#X text 172 225 "val" above is \; local to the lol \; instance \;;
+#X obj 317 138 lol tee ^ count \; loadbng \; concat ^ count \; default
+16 \; range \; bng \; random 128 \;;
+#X connect 0 0 18 0;
+#X connect 2 0 14 0;
+#X connect 6 0 20 0;
+#X connect 14 0 3 0;
+#X connect 15 0 16 0;
+#X connect 18 0 4 0;
+#X connect 20 0 10 0;
