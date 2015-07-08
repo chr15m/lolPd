@@ -1,4 +1,4 @@
-#N canvas 517 90 652 664 10;
+#N canvas 533 99 652 664 10;
 #X msg 13 58 1 2 3 4;
 #X msg 193 47 bang;
 #X msg 345 47 bang;
@@ -36,52 +36,56 @@
 #X obj 352 512 r test;
 #X msg 505 108 0 1 2 3 4 5 6 7;
 #X obj 397 512 r ^;
+#X text 350 354 "local" variables \; using the ^ modifier;
+#X msg 352 488;
+#X msg 354 193 30 40 50 60 70 80;
+#X text 352 169 loop through list;
+#X msg 505 191 30 40 50 60 70 80;
+#X text 503 157 loop through list \; by index;
+#X msg 354 301 1 1 1 2 2 2;
+#X msg 505 338 1 1 1 2 2 2;
+#X obj 345 69 lol range 32 \; gathern 8 \;;
 #X obj 13 80 lol pop myval \; pr remainder \; bng \; concat myval \;
 pr myval \;;
-#X obj 345 69 lol range 32 \; gathern 8 \;;
 #X obj 193 69 lol teef done-1 \; range 32 \; gather done-1 \;;
 #X obj 12 217 lol slice 5 5 \; pr slice'd \;;
 #X obj 199 222 lol range 32 \; tee nums \; sel 22 \; teef done-3 \;
 concat nums \; . done-3 \;;
+#X obj 352 388 lol loadbng \; range 8 \; tee ^ test \; bng \; concat
+^ test \; gathern 8 \; into-message \;;
+#X obj 505 35 lol loadbng \; # this is a comment \; range 8 \; gathern
+8 \; into-message \;;
 #X obj 14 343 lol tee in-seed \; loadbng \; concat in-seed \; default
 1 \; list prepend seed \; list trim \; tee seed \; bng \; range 16
 \; tabread lookup \; tee \$0/compare \; bng \; merge seed \; random
 1024 \; / 1024 \; tee \$0/rand \; concat \$0/compare \; expr if($f1<$f2
 \, 1 \, 0) \; gathern 16 \; into-table result \;;
-#X text 350 354 "local" variables \; using the ^ modifier;
-#X obj 352 388 lol loadbng \; range 8 \; tee ^ test \; bng \; concat
-^ test \; gathern 8 \; into-message \;;
-#X msg 352 488;
-#X msg 354 193 30 40 50 60 70 80;
-#X msg 354 301 1 1 1 2 2 2;
-#X text 352 169 loop through list;
-#X msg 505 191 30 40 50 60 70 80;
-#X text 503 157 loop through list \; by index;
 #X obj 354 215 lol teef ^ done \; each \; / 30 \; int \; gather ^ done
 \; into-message \;;
-#X msg 505 338 1 1 1 2 2 2;
 #X obj 505 213 lol tee ^ vals \; teef ^ done \; list length \; range
 \; item ^ vals \; / 30 \; int \; gather ^ done \; into-message \;;
-#X obj 505 35 lol loadbng \; # this is a comment \; range 8 \; gathern
-8 \; into-message \;;
-#X connect 0 0 28 0;
-#X connect 1 0 30 0;
-#X connect 2 0 29 0;
-#X connect 8 0 31 0;
-#X connect 9 0 32 0;
-#X connect 17 0 33 0;
-#X connect 18 0 33 0;
+#X text 501 384 test incorrect \; local \;;
+#X obj 504 437 lol range 3 \; tee ^ \; pr test-bad \;;
+#X msg 504 416 bang;
+#X connect 0 0 37 0;
+#X connect 1 0 38 0;
+#X connect 2 0 36 0;
+#X connect 8 0 39 0;
+#X connect 9 0 40 0;
+#X connect 17 0 43 0;
+#X connect 18 0 43 0;
 #X connect 20 0 19 0;
 #X connect 21 0 20 0;
-#X connect 22 0 33 0;
+#X connect 22 0 43 0;
 #X connect 25 0 24 0;
 #X connect 27 0 24 0;
-#X connect 29 0 3 0;
-#X connect 30 0 4 0;
-#X connect 32 0 10 0;
-#X connect 35 0 36 0;
-#X connect 37 0 42 0;
-#X connect 40 0 44 0;
-#X connect 42 0 38 0;
-#X connect 44 0 43 0;
-#X connect 45 0 26 0;
+#X connect 30 0 44 0;
+#X connect 32 0 45 0;
+#X connect 36 0 3 0;
+#X connect 38 0 4 0;
+#X connect 40 0 10 0;
+#X connect 41 0 29 0;
+#X connect 42 0 26 0;
+#X connect 44 0 34 0;
+#X connect 45 0 35 0;
+#X connect 48 0 47 0;
