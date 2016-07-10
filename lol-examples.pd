@@ -1,4 +1,4 @@
-#N canvas 533 99 652 664 10;
+#N canvas 552 145 894 664 10;
 #X msg 13 58 1 2 3 4;
 #X msg 193 47 bang;
 #X msg 345 47 bang;
@@ -37,7 +37,7 @@
 #X msg 505 108 0 1 2 3 4 5 6 7;
 #X obj 397 512 r ^;
 #X text 350 354 "local" variables \; using the ^ modifier;
-#X msg 352 488;
+#X msg 352 488 0 1 2 3 4 5 6 7;
 #X msg 354 193 30 40 50 60 70 80;
 #X text 352 169 loop through list;
 #X msg 505 191 30 40 50 60 70 80;
@@ -67,6 +67,18 @@ concat nums \; . done-3 \;;
 #X text 501 384 test incorrect \; local \;;
 #X obj 504 437 lol range 3 \; tee ^ \; pr test-bad \;;
 #X msg 504 416 bang;
+#X msg 670 74 bang;
+#X text 666 11 map and reduce;
+#X msg 675 235 bang;
+#X obj 675 257 lol range 6 \; + 1 \; gathern 6 \; reduce 1 expr $f1
+* $f2 \; into-message \;;
+#X msg 675 331 720;
+#X obj 670 96 lol range 8 \; gathern 8 \; map expr pow($f1 + 1 \, 2)
+\; into-message \;;
+#X msg 670 159 1 4 9 16 25 36 49 64;
+#X text 666 38 run the pow(x \, 2) across all \; values of the list
+0 1 .. 8;
+#X text 672 203 compute the factorial \; of the list 0 1 .. 6;
 #X connect 0 0 37 0;
 #X connect 1 0 38 0;
 #X connect 2 0 36 0;
@@ -89,3 +101,7 @@ concat nums \; . done-3 \;;
 #X connect 44 0 34 0;
 #X connect 45 0 35 0;
 #X connect 48 0 47 0;
+#X connect 49 0 54 0;
+#X connect 51 0 52 0;
+#X connect 52 0 53 0;
+#X connect 54 0 55 0;
