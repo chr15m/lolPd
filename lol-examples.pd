@@ -79,6 +79,11 @@ concat nums \; . done-3 \;;
 #X text 666 38 run the pow(x \, 2) across all \; values of the list
 0 1 .. 8;
 #X text 672 203 compute the factorial \; of the list 0 1 .. 6;
+#X msg 504 523 bang;
+#X text 501 501 lookup values from a list;
+#X msg 504 632 bee bee cat dog dog cat bee cat;
+#X obj 504 545 lol range 8 \; bng \; random 3 \; lookup dog cat bee
+\; gathern 8 \; into-message \;;
 #X connect 0 0 37 0;
 #X connect 1 0 38 0;
 #X connect 2 0 36 0;
@@ -105,3 +110,5 @@ concat nums \; . done-3 \;;
 #X connect 51 0 52 0;
 #X connect 52 0 53 0;
 #X connect 54 0 55 0;
+#X connect 58 0 61 0;
+#X connect 61 0 60 0;
