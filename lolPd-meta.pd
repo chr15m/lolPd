@@ -1,0 +1,9 @@
+#N canvas 1232 412 450 300 10;
+#N canvas 2 48 450 300 META 0;
+#X text 10 110 VERSION 0.1;
+#X text 10 30 NAME lolPd;
+#X text 10 50 AUTHOR Chris McCormick;
+#X text 10 70 LICENSE BSD;
+#X text 10 90 DESCRIPTION DSL for list comprehensions. Requires pd>=0.46
+;
+#X restore 8 7 pd META;
