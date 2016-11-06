@@ -1,9 +1,9 @@
 #N canvas 1 79 450 300 10;
-#X obj 14 343 lol tee in-seed \; loadbng \; concat in-seed \; default
-1 \; list prepend seed \; list trim \; tee seed \; bng \; range 16
-\; tabread lookup \; tee \$0/compare \; bng \; merge seed \; random
-1024 \; / 1024 \; tee \$0/rand \; concat \$0/compare \; expr if($f1<$f2
-\, 1 \, 0) \; gathern 16 \; list prepend 0 \; tee result \;;
+#X obj 14 343 lol |s in-seed \; |loadbang \; concat in-seed \; default
+1 \; list prepend seed \; list trim \; |s seed \; bang \; range 16
+\; tabread lookup \; |s \$0/compare \; bang \; |receive seed \; random
+1024 \; / 1024 \; |s \$0/rand \; concat \$0/compare \; expr if($f1<$f2
+\, 1 \, 0) \; gathern 16 \; list prepend 0 \; |s result \;;
 #X obj 11 8 inlet;
 #X obj 11 30 t a a;
 #X obj 38 54 list prepend 0;
