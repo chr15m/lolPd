@@ -1,0 +1,8 @@
+#N canvas 974 285 450 300 10;
+#X obj 6 8 inlet;
+#X obj 6 30 range \$1;
+#X obj 6 52 gathern \$1;
+#X obj 6 74 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
