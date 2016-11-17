@@ -1,4 +1,4 @@
-#N canvas 1076 275 450 300 10;
+#N canvas 1075 270 450 300 10;
 #X obj 12 14 inlet;
 #X obj 29 120 each \$0/done;
 #X obj 29 172 =?;
@@ -11,13 +11,9 @@
 #X msg 63 57 0;
 #X obj 29 78 list append \$1 \$2 \$3 \$4 \$5 \$6 \$7 \$8 \$9 \$10 \$11
 \$12 \$13 \$14 \$15 \$16;
-#X obj 107 158 print check;
-#X obj 105 193 print result;
 #X connect 0 0 6 0;
 #X connect 1 0 2 0;
-#X connect 1 0 11 0;
 #X connect 2 0 4 0;
-#X connect 2 0 12 0;
 #X connect 3 0 10 1;
 #X connect 4 0 5 0;
 #X connect 5 0 7 1;
