@@ -1,4 +1,4 @@
-#N canvas 275 95 900 664 10;
+#N canvas 273 85 900 664 10;
 #X msg 13 58 1 2 3 4;
 #X msg 193 47 bang;
 #X msg 345 47 bang;
@@ -62,19 +62,12 @@
 #X obj 675 257 lol range 6 \; + 1 \; gathern 6 \; reduce 1 expr $f1
 * $f2 \; into-message \;;
 #X obj 345 69 lol range 32 \; gathern 8 \;;
-#X obj 193 69 lol teef done-1 \; range 32 \; gather done-1 \;;
-#X obj 12 217 lol slice 5 5 \; |print slice'd \;;
-#X obj 199 222 lol range 32 \; |s nums \; sel 22 \; teef done-3 \;
-concat nums \; . done-3 \;;
-#X obj 352 388 lol |loadbang \; range 8 \; |s ^ test \; bang \; concat
+#X obj 12 217 lol slice 5 5 \; ]print slice'd \;;
+#X obj 352 388 lol ]loadbang \; range 8 \; ]s ^ test \; bang \; concat
 ^ test \; gathern 8 \; into-message \;;
-#X obj 505 35 lol |loadbang \; # this is a comment \; range 8 \; gathern
+#X obj 505 35 lol ]loadbang \; # this is a comment \; range 8 \; gathern
 8 \; into-message \;;
-#X obj 354 215 lol teef ^ done \; each \; / 30 \; int \; gather ^ done
-\; into-message \;;
-#X obj 505 213 lol |s ^ vals \; teef ^ done \; list length \; range
-\; item ^ vals \; / 30 \; int \; gather ^ done \; into-message \;;
-#X obj 504 437 lol range 3 \; |s ^ \; |print test-bad \;;
+#X obj 504 437 lol range 3 \; ]s ^ \; ]print test-bad \;;
 #X obj 670 96 lol range 8 \; gathern 8 \; map expr pow($f1 + 1 \, 2)
 \; into-message \;;
 #X obj 504 545 lol range 8 \; bang \; random 3 \; lookup dog cat bee
@@ -82,53 +75,60 @@ concat nums \; . done-3 \;;
 #X msg 675 442 1 5 7 11 13 17 19 23;
 #X msg 199 607 0 a 0 a 1 b 0 a 1 b 0 c 1 b;
 #X msg 199 495 a a b a b c b;
-#X obj 199 518 lol each ^ done \; |s ^ letter \; =? b \; concat ^ letter
+#X obj 199 518 lol each ^ done \; ]s ^ letter \; =? b \; concat ^ letter
 \; gather ^ done \; into-message \;;
 #X text 197 476 equality operator;
-#X obj 675 379 lol |loadbang \; list-range 24 \; filter expr ($f1 %
-3) && ($f1 % 2) \; into-message \;;
-#X obj 14 343 lol |loadbang \; default 1 \; list prepend seed \; list
-trim \; |s seed \; bang \; range 16 \; tabread lookup \; |s ^ compare
-\; bang \; |receive seed \; random 1024 \; / 1024 \; |s \$0/rand \;
+#X obj 14 343 lol ]loadbang \; default 1 \; list prepend seed \; list
+trim \; ]s seed \; bang \; range 16 \; tabread lookup \; ]s ^ compare
+\; bang \; ]receive seed \; random 1024 \; / 1024 \; ]s \$0/rand \;
 concat ^ compare \; expr if($f1<$f2 \, 1 \, 0) \; gathern 16 \; into-table
 result \;;
-#X obj 13 80 lol pop myval \; |print remainder \; bang \; concat myval
-\; |print myval \;;
+#X obj 13 80 lol pop myval \; ]print remainder \; bang \; concat myval
+\; ]print myval \;;
 #X msg 675 495 dog cat 23 3 boing hi;
 #X msg 675 603 0 dog 1 cat 0 23 1 3 0 boing 1 hi;
-#X obj 675 516 lol each ^ done \; |s ^ check \; in cat 3 hi \; concat
+#X obj 675 516 lol each ^ done \; ]s ^ check \; in cat 3 hi \; concat
 ^ check \; gather ^ done \; into-message \;;
 #X text 673 474 test if values are in a list;
-#X connect 0 0 69 0;
-#X connect 1 0 52 0;
+#X obj 354 215 lol teef ^ done \; each \; / 30 \; int \; gather ^ done
+\; into-message \;;
+#X obj 199 222 lol range 32 \; ]s nums \; sel 22 \; teef done-3 \;
+concat nums \; ]. done-3 \;;
+#X obj 505 213 lol ]s ^ vals \; teef ^ done \; list length \; range
+\; item ^ vals \; / 30 \; int \; gather ^ done \; into-message \;;
+#X obj 193 69 lol teef done-1 \; range 32 \; gather done-1 \;;
+#X obj 675 379 lol ]loadbang \; list-range 24 \; filter expr ($f1 %
+3) && ($f1 % 2) \; into-message \;;
+#X connect 0 0 64 0;
+#X connect 1 0 72 0;
 #X connect 2 0 51 0;
-#X connect 8 0 53 0;
-#X connect 9 0 54 0;
-#X connect 17 0 68 0;
-#X connect 18 0 68 0;
+#X connect 8 0 52 0;
+#X connect 9 0 70 0;
+#X connect 17 0 63 0;
+#X connect 18 0 63 0;
 #X connect 20 0 19 0;
 #X connect 21 0 20 0;
-#X connect 22 0 68 0;
+#X connect 22 0 63 0;
 #X connect 25 0 24 0;
 #X connect 27 0 24 0;
-#X connect 30 0 57 0;
-#X connect 32 0 58 0;
-#X connect 37 0 59 0;
-#X connect 38 0 60 0;
+#X connect 30 0 69 0;
+#X connect 32 0 71 0;
+#X connect 37 0 55 0;
+#X connect 38 0 56 0;
 #X connect 40 0 50 0;
-#X connect 45 0 61 0;
+#X connect 45 0 57 0;
 #X connect 50 0 41 0;
 #X connect 51 0 3 0;
-#X connect 52 0 4 0;
-#X connect 54 0 10 0;
-#X connect 55 0 29 0;
-#X connect 56 0 26 0;
-#X connect 57 0 34 0;
-#X connect 58 0 35 0;
-#X connect 60 0 42 0;
-#X connect 61 0 47 0;
-#X connect 64 0 65 0;
-#X connect 65 0 63 0;
-#X connect 67 0 62 0;
-#X connect 70 0 72 0;
-#X connect 72 0 71 0;
+#X connect 53 0 29 0;
+#X connect 54 0 26 0;
+#X connect 56 0 42 0;
+#X connect 57 0 47 0;
+#X connect 60 0 61 0;
+#X connect 61 0 59 0;
+#X connect 65 0 67 0;
+#X connect 67 0 66 0;
+#X connect 69 0 34 0;
+#X connect 70 0 10 0;
+#X connect 71 0 35 0;
+#X connect 72 0 4 0;
+#X connect 73 0 58 0;
